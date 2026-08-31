@@ -279,6 +279,66 @@
   --scrollbar-thin-track: transparent !important;
   --custom-scrollbar-thin-thumb: var(--oc-border) !important;
 
+  /* Visual-refresh text and interactive families.
+     Discord defines these with color-mix(in oklab, hsl(...)) rather than by
+     reusing the older tokens, so they are unaffected by anything above and
+     have to be named individually. --text-strong is the one that colours
+     usernames and headings: left alone it stays white, which is invisible on
+     a light theme and simply unthemed on a dark one. */
+  --text-strong: var(--oc-tx-strong) !important;
+  --text-subtle: var(--oc-tx-dim) !important;
+  --text-invert: var(--oc-s2) !important;
+
+  --interactive-text-default: var(--oc-tx) !important;
+  --interactive-text-hover: var(--oc-tx-strong) !important;
+  --interactive-text-active: var(--oc-tx-strong) !important;
+  --interactive-icon-default: var(--oc-tx-dim) !important;
+  --interactive-icon-hover: var(--oc-tx) !important;
+  --interactive-icon-active: var(--oc-tx-strong) !important;
+  --interactive-background-default: transparent !important;
+  --interactive-background-hover: rgba(var(--oc-fg-rgb), 0.08) !important;
+  --interactive-background-active: rgba(var(--oc-fg-rgb), 0.12) !important;
+  --interactive-background-selected: rgba(var(--oc-fg-rgb), 0.16) !important;
+  --interactive-accent-background-default: var(--oc-accent) !important;
+  --interactive-accent-background-hover: var(--oc-accent-hover) !important;
+  --interactive-accent-background-active: var(--oc-accent-hover) !important;
+  --interactive-accent-background-selected: var(--oc-accent) !important;
+
+  --text-status-online: var(--oc-green) !important;
+  --text-status-idle: var(--oc-yellow) !important;
+  --text-status-dnd: var(--oc-red) !important;
+  --text-status-offline: var(--oc-tx-faint) !important;
+  --text-voice-connected: var(--oc-green) !important;
+  --text-voice-speaking: var(--oc-green) !important;
+  --text-voice-disconnected: var(--oc-red) !important;
+  --text-feedback-critical: var(--oc-red) !important;
+  --text-feedback-info: var(--oc-blue) !important;
+
+  /* Code blocks pick up the terminal's syntax colours. */
+  --text-code: var(--oc-tx) !important;
+  --text-code-comment: var(--oc-tx-faint) !important;
+  --text-code-keyword: var(--oc-magenta) !important;
+  --text-code-string: var(--oc-green) !important;
+  --text-code-number: var(--oc-orange) !important;
+  --text-code-builtin: var(--oc-cyan) !important;
+  --text-code-property: var(--oc-cyan) !important;
+  --text-code-tag: var(--oc-magenta) !important;
+  --text-code-type: var(--oc-yellow) !important;
+  --text-code-variable: var(--oc-tx) !important;
+  --text-code-title: var(--oc-blue) !important;
+  --text-code-attribute: var(--oc-green) !important;
+  --text-code-link: var(--oc-blue) !important;
+  --text-code-namespace: var(--oc-blue) !important;
+  --text-code-addition: var(--oc-green) !important;
+  --text-code-deletion: var(--oc-red) !important;
+  --text-code-error: var(--oc-red) !important;
+  --text-code-escape: var(--oc-magenta) !important;
+  --text-code-operator: var(--oc-cyan) !important;
+  --text-code-regexp: var(--oc-green) !important;
+  --text-code-section: var(--oc-red) !important;
+  --text-code-bullet: var(--oc-blue) !important;
+  --text-code-decorator: var(--oc-yellow) !important;
+
   /* Misc */
   --search-popout-option-fade: none !important;
   --search-popout-option-non-text-color: var(--oc-tx) !important;
