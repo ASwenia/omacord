@@ -13,8 +13,13 @@
 
 :root {
   --oc-s0: var(--omacord-s0, #0e0e14);
-  --oc-s1: var(--omacord-s1, #13141c);
-  --oc-s2: var(--omacord-s2, #1a1b26);
+  /* s1 and s2 are crossed on purpose. The palette orders surfaces from
+     recessed to raised, but Discord reads better with the chat on the
+     theme's own background and the secondary surfaces a step down from it,
+     so the two roles are exchanged here, once, rather than at each of the
+     several dozen tokens built on them. */
+  --oc-s1: var(--omacord-s2, #1a1b26);
+  --oc-s2: var(--omacord-s1, #13141c);
   --oc-s3: var(--omacord-s3, #24283b);
   --oc-s4: var(--omacord-s4, #2a2f45);
 
@@ -448,3 +453,4 @@ pre,
 * {
   text-rendering: optimizeLegibility;
 }
+
