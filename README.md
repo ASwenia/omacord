@@ -6,7 +6,7 @@ Run `omarchy theme set tokyo-night` and Discord recolours along with your
 terminal, your bar and your editor. The theme is regenerated from the active
 Omarchy palette and handed to Vencord, which reloads it on the spot.
 
-![omacord under four Omarchy themes](preview.png)
+![omacord across eight Omarchy themes](preview.png)
 
 It is only CSS. Vencord already supports user themes, so omacord needs no
 client patching, no browser extension, no privileged settings and no
