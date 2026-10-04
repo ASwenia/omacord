@@ -379,11 +379,9 @@
    call view collapse into one solid block with no falloff. Retint the stops
    and keep the shape. */
 [class*="gradientContainer_"] {
-  background-image:
-    radial-gradient(120% 90% at 50% 0%,
-      var(--oc-s2) 0%,
-      var(--oc-s1) 45%,
-      var(--oc-s0) 100%) !important;
+  /* Also used for the hover top/bottom bars; must stay see-through or it
+     hides camera tiles. The vignette lives on callContainer_ instead. */
+  background: none !important;
 }
 
 /* Base under the call vignette only. videoWrapper_ is deliberately left
@@ -391,6 +389,11 @@
    translucent tile treatment Discord layers on top. */
 [class*="callContainer_"] {
   background-color: var(--oc-s0) !important;
+  background-image:
+    radial-gradient(120% 90% at 50% 0%,
+      var(--oc-s2) 0%,
+      var(--oc-s1) 45%,
+      var(--oc-s0) 100%) !important;
 }
 
 /* Monochrome icons that Discord hardcodes to white. */
