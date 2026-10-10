@@ -141,8 +141,34 @@ done
 # ------------------------------------------------------------------- render
 # Refreshing re-renders the palette and runs the hook, which is what puts the
 # stylesheet in front of the client.
-if command -v omarchy >/dev/null 2>&1; then
-  omarchy theme refresh >/dev/null 2>&1 || warn "'omarchy theme refresh' failed, run it yourself"
+#
+# `omarchy theme refresh` is a full `omarchy theme set`: it runs every
+# theme-set hook on the machine and writes the browser policy with sudo. The
+# shell plugin runs this installer on every shell start and plugin reload, so
+# refresh only when something omacord renders has changed: the stylesheet,
+# the palette template, the hook or the client list, or a client without the
+# theme file. A theme change does not need it, the hook handles that.
+stamp_file="$OMACORD_DATA/installed.sha256"
+stamp=$(
+  {
+    cat "$OMACORD_DATA/style.css" "$templates/omacord.palette.css.tpl" "$hooks/omacord"
+    printf '%s\n' ${targets+"${targets[@]}"}
+  } | sha256sum | cut -d' ' -f1
+)
+needs_render=false
+[[ $(cat "$stamp_file" 2>/dev/null) == "$stamp" ]] || needs_render=true
+for themes in ${targets+"${targets[@]}"}; do
+  [[ -s $themes/$OMACORD_THEME_FILE ]] || needs_render=true
+done
+
+if [[ $needs_render == false ]]; then
+  note "nothing changed since the last render, skipped 'omarchy theme refresh'"
+elif command -v omarchy >/dev/null 2>&1; then
+  if omarchy theme refresh >/dev/null 2>&1; then
+    printf '%s\n' "$stamp" >"$stamp_file"
+  else
+    warn "'omarchy theme refresh' failed, run it yourself"
+  fi
 else
   warn "omarchy is not on PATH, run 'omarchy theme refresh' once it is"
 fi
